@@ -1,4 +1,4 @@
-# STM32 excercise 1  
+# STM32_ultrasonic_rgb
 
 This is simple excercise for STM32F410RBT6 microcontroller which is part of NUCLEO-F410RB development board.  
 The goal is to write a program that measures distance with ultrasonic sensor and represents it as RGB values.   
