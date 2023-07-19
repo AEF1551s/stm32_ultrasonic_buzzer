@@ -43,6 +43,9 @@ pin_struct_TypeDef pin_setup(GPIO_TypeDef *GPIOx, pin_TypeDef pinx, pin_mode_Typ
             SET_BIT(pin_struct.GPIOx->MODER, mode << mode_pin);
         }
         break;
+    case ALTERNATE:
+        SET_BIT(pin_struct.GPIOx->MODER, mode << mode_pin);
+        break;
     default:
         break;
     }
