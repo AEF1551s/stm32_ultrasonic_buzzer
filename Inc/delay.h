@@ -25,7 +25,6 @@ void delay_ms(uint32_t delay)
 
 void delay_us(uint32_t delay) // Uses TIM5
 {
-    tim5_us_init();
     for (uint32_t i = 0; i < delay; i++)
     {
 
