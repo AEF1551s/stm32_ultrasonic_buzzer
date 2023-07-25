@@ -10,6 +10,7 @@
 #include <stdint.h>
 
 // TODO: Enable floating point
+//FIXME: Somewhere 8cm or (8*58)uS additional are being added to input echo signal. Across all distance ranges. Sometimes
 int us_read_pb11_distance(pin_struct_TypeDef &trig_pin)
 {
     int timestamp = 0;
@@ -29,6 +30,12 @@ int us_read_pb11_distance(pin_struct_TypeDef &trig_pin)
 
     // Read time interval and clear IF and OF flags
     timestamp = TIM5->CCR4;
+    //Timeout condition
+    if (timestamp >38000)
+    {
+        return 0;
+    }
+    
     CLEAR_BIT(TIM5->SR, TIM_SR_CC4OF);
 
     // Minimum cycle time is no less then 50ms
