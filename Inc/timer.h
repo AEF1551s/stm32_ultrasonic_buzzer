@@ -4,11 +4,12 @@
 #include <stm32f410rx.h>
 #include <stm32f4xx.h>
 
-// #define APB1_CLOCK 48000000UL
-#define PRESCALER_VALUE_US_INIT 24U // 24 cycles = 0,5uS
-#define ARR_VALUE_US_INIT 2U        // 1uS total
-#define PRESCALER_VALUE_US_IC 48U   // 48 cycles = 1uS
-#define ARR_VALUE_US_IC 76000U      // 76 ms 2x38ms timeout
+// #define APB1_CLOCK 16000000UL
+#define PRESCALER_VALUE_US_INIT 8U     // 8 cycles = 0,5uS
+#define ARR_VALUE_US_INIT 2U            // 1uS total
+
+#define PRESCALER_VALUE_US_IC 16U       // 16 cycles = 1uS
+#define ARR_VALUE_US_IC 1000000U        //  1s timeout
 
 void tim5_us_init()
 {
