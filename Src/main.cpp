@@ -19,6 +19,7 @@
 
 pin_struct_TypeDef trig_pin;
 pin_struct_TypeDef echo_pin;
+pin_struct_TypeDef buzzer_pin;
 
 void clock_init()
 {
@@ -32,6 +33,8 @@ void pin_init()
   echo_pin = pin_setup(GPIOB, PIN11, ALTERNATE);
   // set pb12 alternate function type to TIM5_CH1 (AF2 = 0010)
   SET_BIT(echo_pin.GPIOx->AFR[1], GPIO_AFRH_AFSEL11_1);
+
+  buzzer_pin = pin_setup(GPIOB, PIN7, OUTPUT);
 }
 
 int main(void)
@@ -44,6 +47,14 @@ int main(void)
   /* Loop forever */
   do
   {
-    dist_cm = us_read_pb11_distance(trig_pin);
+    // Measure distance
+    dist_cm = us_read_pb11_distance(trig_pin) / 58;
+
+    //TODO: Use PWM for buzzer
+    // Buzz based on distance
+    digital_write(buzzer_pin, HIGH);
+    delay_ms(dist_cm);
+    digital_write(buzzer_pin, LOW);
+
   } while (true);
 }
