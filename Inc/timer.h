@@ -5,10 +5,11 @@
 #include <stm32f4xx.h>
 
 // #define APB1_CLOCK 48000000UL
-#define PRESCALER_VALUE_US_INIT 24U // 28 cycles = 0,5uS
+#define PRESCALER_VALUE_US_INIT 24U // 24 cycles = 0,5uS
 #define ARR_VALUE_US_INIT 2U        // 1uS total
-#define PRESCALER_VALUE_US_IC 24U // 28 cycles = 0,5uS
-#define ARR_VALUE_US_IC 76000U        // 1uS total
+#define PRESCALER_VALUE_US_IC 48U   // 48 cycles = 1uS
+#define ARR_VALUE_US_IC 76000U      // 76 ms 2x38ms timeout
+
 void tim5_us_init()
 {
     //  APB1 clock enable for TIM5
@@ -35,14 +36,12 @@ void tim5_pb11_input_capture()
     // Set CH4 configured as input
     SET_BIT(TIM5->CCMR2, TIM_CCMR2_CC4S_0);
 
-    //Set polarity mode to both edges
+    // Set polarity mode to both edges
     SET_BIT(TIM5->CCER, TIM_CCER_CC4NP | TIM_CCER_CC4P);
 
     // Set to capture enable
     SET_BIT(TIM5->CCER, TIM_CCER_CC4E);
 
-    // // Clear counter
-    // TIM5->CNT = 0U;
     // Enable timer
     SET_BIT(TIM5->CR1, TIM_CR1_CEN);
 }
