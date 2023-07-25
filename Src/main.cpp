@@ -53,7 +53,7 @@ int main(void)
     //TODO: Use PWM for buzzer
     // Buzz based on distance
     digital_write(buzzer_pin, HIGH);
-    delay_ms(dist_cm);
+    delay_ms(dist_cm/10);
     digital_write(buzzer_pin, LOW);
 
   } while (true);
