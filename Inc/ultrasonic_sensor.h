@@ -31,10 +31,10 @@ int us_read_pb11_distance(pin_struct_TypeDef &trig_pin)
     // Read time interval and clear IF and OF flags
     timestamp = TIM5->CCR4;
     //Timeout condition
-    if (timestamp >38000)
-    {
-        return 0;
-    }
+    // if (timestamp >38000)
+    // {
+    //     return 0;
+    // }
     
     CLEAR_BIT(TIM5->SR, TIM_SR_CC4OF);
 
