@@ -1,8 +1,8 @@
-# STM32_ultrasonic_rgb
+# STM32_ultrasonic_buzzer
 
 This is simple excercise for STM32F410RBT6 microcontroller which is part of NUCLEO-F410RB development board.  
-The goal is to write a program that measures distance with ultrasonic sensor and represents it as RGB values.   
-This program uses 1 RGB LED, 1 HR-SR04 ultrasonic sensor.
+The goal is to write a program that measures distance with ultrasonic sensor and based on that makes buzzer sounds.   
+This program uses 1 buzzer, 1 HR-SR04 ultrasonic sensor.
 
 This project includes minimal headers for STM32F4xx.  
 This project **does not** include any HAL header files.  
@@ -24,4 +24,8 @@ Contains user defined source files.
 * CubeIDE installed. See ` https://www.st.com/en/development-tools/stm32cubeide.html`.  
 &nbsp;  
 # Build  
-Use CubeIDE to build and flash the NUCLEO development board.  
+Use CubeIDE to build and flash the NUCLEO development board.
+
+# Notes  
+To make the buzzer sound continous, PWM is needed. In this project a delay is used.  
+Next goal is to use PWM for buzzer.   
